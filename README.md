@@ -1,5 +1,5 @@
-# Requirements
-Java 21.0.2
+## Requirements
+Java 21
 
 ---
 ## How to use
@@ -20,6 +20,21 @@ Alternatively compile all files and run App
 To run the program using input's from the console, follow the previous steps, without including an argument.
 
     java -cp run.jar App
+
+---
+
+## .txt file format
+
+An example txt file is within the repository. The first line should contain the Plateau's outer bounds. The next lines should alternate between the rovers starting location, and the commands it should follow. 
+
+    5 5
+    1 2 N
+    LMLMLMLMM
+    3 3 E
+    MMRMMRMRRM
+
+
+
     
 
 

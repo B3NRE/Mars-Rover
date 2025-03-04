@@ -1,6 +1,4 @@
 
-
-
 public class Plateau {
     private int height;
     private int length;
