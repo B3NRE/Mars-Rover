@@ -9,7 +9,7 @@ Using JAR file:
 
     java -cp run.jar App "MyFile.txt"
 
-Alternatively compile all files and run App
+Alternatively, compile all files and run App
 
     javac *.java
 
@@ -32,6 +32,7 @@ An example txt file is within the repository. The first line should contain the 
     LMLMLMLMM
     3 3 E
     MMRMMRMRRM
+
 
 
 
