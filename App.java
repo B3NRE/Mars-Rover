@@ -7,13 +7,13 @@ public class App {
 
     public static void main(String[] args) throws IOException{
         Command command;
-        if (args.length == 1) {
+        if (args.length == 1) { //File provided
             try {
-                List<String> lines = Files.readAllLines(Paths.get(args[0]));
-                command = createCommand(lines.get(0));
+                List<String> lines = Files.readAllLines(Paths.get(args[0])); 
+                command = createCommand(lines.get(0)); //Create Plateau
                 int index = 1;
                 
-                while (index < lines.size()-1) {
+                while (index < lines.size()-1) { //Alternate between rover initialisation and movement commands
                     if (!initialiseRover(lines.get(index), command)) {index++; continue;};
                     index++;
 
@@ -22,7 +22,7 @@ public class App {
                 }
             }
             catch(Exception e) {
-                System.out.println("Contents txt file invalid");
+                System.out.println("Invalid format");
             }
             System.exit(0);
         }
@@ -31,7 +31,7 @@ public class App {
         @SuppressWarnings("resource") 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (true) { //Console input
             System.out.println("Enter the plateau's upper coordinates in the format 'x y'. e.g. '3 5'. Type 'exit' to exit");
             String input = scanner.nextLine();
             if (input.equals("exit") || input.equals("close")) {System.exit(0);}
@@ -48,7 +48,7 @@ public class App {
         }
 
         
-        while (true) {
+        while (true) { //Alternate between rover initialisation and movement commands
 
             while (true) {
                 System.out.println("Enter the Rover's current coordinates and orientation 'x y orientation'. e.g. '2 3 N'. Type 'exit' to exit");
@@ -83,7 +83,7 @@ public class App {
 
         
     }
-    private static Command createCommand(String parameters) {
+    private static Command createCommand(String parameters) { //Instantiate command object with plateau parameters
             
         String[] grid = parameters.split(" ");
         int length = Integer.parseInt(grid[0]);
@@ -97,7 +97,7 @@ public class App {
 
     }
 
-    private static boolean initialiseRover(String parameters, Command command) {
+    private static boolean initialiseRover(String parameters, Command command) { //Instantiate Rover
         String[] roverState = parameters.split(" ");
         int x = Integer.parseInt(roverState[0]);
         int y = Integer.parseInt(roverState[1]);
@@ -107,9 +107,8 @@ public class App {
     
     }
 
-    private static boolean commandRover(String parameters, Command command) {
+    private static void commandRover(String parameters, Command command) { //Move most recently added rover in command
         String[] location = command.roverCommands(parameters);
         System.out.println("Rover has finished traversal and is located at x: " + location[0] + ", y: " + location[1] + " Direction: " + location[2] + "\n");
-        return true;
     }
 }

@@ -11,7 +11,7 @@ public class Command {
     }
 
     public Rover getRover(int index) {
-        return (index < rovers.size() && index >= 0) ? rovers.get(index) : null;
+        return (index < rovers.size() && index >= 0) ? rovers.get(index) : null; //If rover exists
     } 
 
     public boolean createRover(int x, int y, char direction) { //Returns true if Rover has landed successfully
@@ -27,7 +27,7 @@ public class Command {
         return (c == 'N' || c == 'E' || c == 'S' || c == 'W') ? c : '/'; //Return '/' if not a valid direction
     }
 
-    public String[] roverCommands(String commands) {
+    public String[] roverCommands(String commands) { //Performs rovers commands. returns location and direction
         int size = rovers.size()-1;
         Rover rover = rovers.get(size);
         rover.move(commands);
