@@ -2,16 +2,16 @@ import java.util.Map;
 import java.util.HashMap;
 
 class Rover {
-    private int x = -1; //Horizontal
-    private int y = -1; //Vertical
+    private int x; //Horizontal
+    private int y; //Vertical
     private Plateau plateau;
 
     private DirectionNode direction;
     private Map<Character, int[]> directions = new HashMap<>();
     
     public Rover (int x, int y, char currentDirection, Plateau plateau) {
-        this.x = x;
-        this.y = y; //Current Location
+        this.x = Math.max(0, x);
+        this.y = Math.max(0, y); //Current Location
         this.plateau = plateau;
         if (!plateau.withinBounds(x, y)) {x = -1; y = -1;} //Initalised out of bounds case
 
@@ -44,9 +44,6 @@ class Rover {
     }
 
     public int[] getLocation() {
-        if (x == -1 || y == -1) {
-            return null;
-        }
         return new int[] {x, y};
     }
 

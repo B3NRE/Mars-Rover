@@ -10,8 +10,10 @@ public class App {
         if (args.length == 1) { //File provided
             try {
                 List<String> lines = Files.readAllLines(Paths.get(args[0])); 
+                
                 command = createCommand(lines.get(0)); //Create Plateau
                 int index = 1;
+
                 
                 while (index < lines.size()-1) { //Alternate between rover initialisation and movement commands
                     if (!initialiseRover(lines.get(index), command)) {index++; continue;};
@@ -35,13 +37,12 @@ public class App {
             System.out.println("Enter the plateau's upper coordinates in the format 'x y'. e.g. '3 5'. Type 'exit' to exit");
             String input = scanner.nextLine();
             if (input.equals("exit") || input.equals("close")) {System.exit(0);}
-            
-            
 
             try {
                 command = createCommand(input);
                 break;
-            }
+                }
+                
             catch (Exception e) {
                 System.out.println("Invalid Format, Try Again");
             }     

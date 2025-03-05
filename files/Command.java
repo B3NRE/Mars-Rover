@@ -8,6 +8,7 @@ public class Command {
     
     public Command(Plateau plateau) {
         this.plateau = plateau;
+        
     }
 
     public Rover getRover(int index) {

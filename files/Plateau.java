@@ -4,8 +4,8 @@ public class Plateau {
     private int length;
     
     public Plateau (int length, int height) {
-        this.length = length;
-        this.height = height;
+        this.length = Math.max(0, length);
+        this.height = Math.max(0, height);
     }
 
     public boolean withinBounds(int x, int y) {
